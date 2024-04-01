@@ -1,9 +1,8 @@
 package io.aekarakus.domain.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "devices")
@@ -14,4 +13,10 @@ public class Device {
 
     @Column(unique = true)
     private String name;
+
+    @ManyToOne
+    private Profile profile;
+
+    @OneToMany(mappedBy = "device")
+    private List<User> userList;
 }

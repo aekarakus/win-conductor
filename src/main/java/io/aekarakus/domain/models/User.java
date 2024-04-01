@@ -2,6 +2,7 @@ package io.aekarakus.domain.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,4 +13,7 @@ public class User {
     private Long id;
 
     private String userName;
+
+    @ManyToOne
+    private Device device;
 }
