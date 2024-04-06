@@ -1,9 +1,7 @@
 package io.aekarakus.controllers;
 
-import io.aekarakus.exceptions.DeviceNotReachableException;
 import io.aekarakus.domain.models.Device;
 import io.aekarakus.services.DeviceService;
-import io.aekarakus.utils.DeviceUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

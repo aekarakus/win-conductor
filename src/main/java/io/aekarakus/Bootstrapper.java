@@ -14,7 +14,7 @@ public class Bootstrapper implements CommandLineRunner {
 
     private final DeviceRepository deviceRepository;
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         Device windowsDeviceA = Device.builder()
                 .id(1L)
