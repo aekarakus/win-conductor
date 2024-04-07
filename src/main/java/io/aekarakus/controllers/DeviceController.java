@@ -22,7 +22,7 @@ public class DeviceController {
         return ResponseEntity.ok().body(savedDevice);
     }
 
-    @PostMapping("/deregister")
+    @DeleteMapping("/deregister")
     void deregisterDevice(@RequestBody String address){
         deviceService.deregisterDevice(address);
     }

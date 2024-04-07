@@ -6,6 +6,7 @@ import io.aekarakus.exceptions.DeviceNotFoundException;
 import io.aekarakus.exceptions.DeviceNotReachableException;
 import io.aekarakus.services.DeviceService;
 import io.aekarakus.utils.DeviceUtils;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceRepository.save(device);
     }
 
+    @Transactional
     @Override
     public void deregisterDevice(String address) {
         Device device = deviceRepository.findDeviceByAddress(address).orElseThrow(DeviceNotFoundException::new);
