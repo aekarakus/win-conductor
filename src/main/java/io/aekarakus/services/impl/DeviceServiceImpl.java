@@ -1,6 +1,10 @@
 package io.aekarakus.services.impl;
 
+import io.aekarakus.domain.dtos.DeviceDto;
+import io.aekarakus.domain.mappers.DeviceMapper;
+import io.aekarakus.domain.mappers.DeviceMapperImpl;
 import io.aekarakus.domain.models.Device;
+import io.aekarakus.domain.models.Profile;
 import io.aekarakus.domain.repositories.DeviceRepository;
 import io.aekarakus.exceptions.DeviceNotFoundException;
 import io.aekarakus.exceptions.DeviceNotReachableException;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor
@@ -19,6 +24,7 @@ public class DeviceServiceImpl implements DeviceService {
 
     private final DeviceRepository deviceRepository;
     private final DeviceUtils deviceUtils;
+    private final DeviceMapper deviceMapper;
 
     @Override
     public Device registerDevice(Device device) throws IOException {
@@ -36,7 +42,15 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-    public List<Device> listRegisteredDevices() {
-        return deviceRepository.findAll();
+    public List<DeviceDto> listRegisteredDevices() {
+        return deviceRepository.findAll().stream().map(deviceMapper::deviceToDeviceDto).toList();
+    }
+
+
+
+    @Override
+    public List<Device> getDevicesThatHaveProfile(Long id) {
+
+        return deviceRepository.findDevicesByProfileId(id);
     }
 }

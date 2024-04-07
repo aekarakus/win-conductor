@@ -1,5 +1,6 @@
 package io.aekarakus.controllers;
 
+import io.aekarakus.domain.dtos.DeviceDto;
 import io.aekarakus.domain.models.Device;
 import io.aekarakus.services.DeviceService;
 import lombok.AllArgsConstructor;
@@ -28,8 +29,8 @@ public class DeviceController {
     }
 
     @GetMapping("/list")
-    ResponseEntity<List<Device>> listDevices(){
-        List<Device> devices = deviceService.listRegisteredDevices();
+    ResponseEntity<List<DeviceDto>> listDevices(){
+        List<DeviceDto> devices = deviceService.listRegisteredDevices();
         return ResponseEntity.ok().body(devices);
     }
 }
