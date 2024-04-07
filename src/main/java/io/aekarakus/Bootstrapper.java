@@ -1,6 +1,8 @@
 package io.aekarakus;
 
+import io.aekarakus.domain.models.Application;
 import io.aekarakus.domain.models.Device;
+import io.aekarakus.domain.repositories.ApplicationRepository;
 import io.aekarakus.domain.repositories.DeviceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +15,8 @@ import java.util.List;
 public class Bootstrapper implements CommandLineRunner {
 
     private final DeviceRepository deviceRepository;
+    private final ApplicationRepository applicationRepository;
+
     @Override
     public void run(String... args) {
 
@@ -29,5 +33,19 @@ public class Bootstrapper implements CommandLineRunner {
                 .build();
 
         deviceRepository.saveAll(List.of(windowsDeviceA, windowsDeviceB));
+
+        Application chrome = Application.builder()
+                .id(1L)
+                .chocolateyName("GoogleChrome")
+                .name("Google Chrome")
+                .build();
+
+        Application npp = Application.builder()
+                .id(2L)
+                .chocolateyName("notepadplusplus")
+                .name("Notepad++")
+                .build();
+
+        applicationRepository.saveAll(List.of(chrome, npp));
     }
 }

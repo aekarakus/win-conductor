@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 public interface ApplicationService {
 
-    void createApplication(Application application);
-    void deleteApplication(Application application);
+    Application createApplication(Application application);
+    void deleteApplication(String chocolateyName);
+    List<Application> listApplications();
 }
