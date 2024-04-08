@@ -1,7 +1,5 @@
 package io.aekarakus;
 
-import io.aekarakus.domain.mappers.DeviceMapper;
-import io.aekarakus.domain.mappers.ProfileMapper;
 import io.aekarakus.domain.models.Application;
 import io.aekarakus.domain.models.Device;
 import io.aekarakus.domain.models.Profile;
@@ -14,8 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Component

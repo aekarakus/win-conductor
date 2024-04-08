@@ -27,11 +27,12 @@ public class DeviceServiceImpl implements DeviceService {
     private final DeviceMapper deviceMapper;
 
     @Override
-    public Device registerDevice(Device device) throws IOException {
+    public DeviceDto registerDevice(Device device) throws IOException {
         if(!deviceUtils.isDeviceReachable(device)){
             throw new DeviceNotReachableException();
         }
-        return deviceRepository.save(device);
+        Device savedDevice = deviceRepository.save(device);
+        return deviceMapper.deviceToDeviceDto(savedDevice);
     }
 
     @Transactional
@@ -46,11 +47,10 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceRepository.findAll().stream().map(deviceMapper::deviceToDeviceDto).toList();
     }
 
-
-
     @Override
-    public List<Device> getDevicesThatHaveProfile(Long id) {
+    public List<DeviceDto> getDevicesThatHaveProfile(Long id) {
 
-        return deviceRepository.findDevicesByProfileId(id);
+        List<Device> devicesByProfileId = deviceRepository.findDevicesByProfileId(id);
+        return devicesByProfileId.stream().map(deviceMapper::deviceToDeviceDto).toList();
     }
 }

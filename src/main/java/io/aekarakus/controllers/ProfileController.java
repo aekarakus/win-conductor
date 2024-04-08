@@ -1,8 +1,6 @@
 package io.aekarakus.controllers;
 
-import io.aekarakus.domain.models.Application;
 import io.aekarakus.domain.models.Profile;
-import io.aekarakus.services.ApplicationService;
 import io.aekarakus.services.ProfileService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

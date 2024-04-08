@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public interface DeviceService {
 
-    Device registerDevice(Device device) throws IOException;
+    DeviceDto registerDevice(Device device) throws IOException;
 
     void deregisterDevice(String address);
     List<DeviceDto> listRegisteredDevices();
-    List<Device> getDevicesThatHaveProfile(Long profileId);
+    List<DeviceDto> getDevicesThatHaveProfile(Long profileId);
 }

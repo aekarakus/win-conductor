@@ -1,7 +1,6 @@
 package io.aekarakus.services.impl;
 
 import io.aekarakus.domain.models.Application;
-import io.aekarakus.domain.models.Device;
 import io.aekarakus.domain.models.Profile;
 import io.aekarakus.domain.repositories.ProfileRepository;
 import io.aekarakus.services.ProfileService;
