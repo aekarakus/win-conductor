@@ -1,5 +1,6 @@
 package io.aekarakus.controllers;
 
+import io.aekarakus.domain.dtos.ProfileDto;
 import io.aekarakus.domain.models.Profile;
 import io.aekarakus.services.ProfileService;
 import lombok.AllArgsConstructor;
@@ -16,9 +17,9 @@ public class ProfileController {
     private final ProfileService profileService;
 
     @PostMapping("/create")
-    public ResponseEntity<Profile> createProfile(@RequestBody Profile profile){
+    public ResponseEntity<ProfileDto> createProfile(@RequestBody Profile profile){
 
-        Profile createdProfile = profileService.createProfile(profile);
+        ProfileDto createdProfile = profileService.createProfile(profile);
         return ResponseEntity.ok().body(createdProfile);
 
     }
@@ -30,9 +31,9 @@ public class ProfileController {
     }
 
     @GetMapping("/list")
-    ResponseEntity<List<Profile>> listProfiles(){
+    ResponseEntity<List<ProfileDto>> listProfiles(){
 
-        List<Profile> profiles = profileService.listProfiles();
+        List<ProfileDto> profiles = profileService.listProfiles();
         return ResponseEntity.ok().body(profiles);
     }
 }

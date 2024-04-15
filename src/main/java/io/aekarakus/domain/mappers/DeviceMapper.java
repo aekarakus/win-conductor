@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class DeviceMapper {
 
     @Autowired
-    ProfileMapper profileMapper;
+    ProfileMapperImpl  profileMapper = new ProfileMapperImpl();
 
     @Mapping(source = "profile", target = "profileInfo", qualifiedByName = "profileInfoProducer")
     public abstract DeviceDto  deviceToDeviceDto(Device device);

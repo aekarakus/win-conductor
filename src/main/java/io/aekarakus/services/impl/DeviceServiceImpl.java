@@ -2,9 +2,7 @@ package io.aekarakus.services.impl;
 
 import io.aekarakus.domain.dtos.DeviceDto;
 import io.aekarakus.domain.mappers.DeviceMapper;
-import io.aekarakus.domain.mappers.DeviceMapperImpl;
 import io.aekarakus.domain.models.Device;
-import io.aekarakus.domain.models.Profile;
 import io.aekarakus.domain.repositories.DeviceRepository;
 import io.aekarakus.exceptions.DeviceNotFoundException;
 import io.aekarakus.exceptions.DeviceNotReachableException;
@@ -16,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 @AllArgsConstructor

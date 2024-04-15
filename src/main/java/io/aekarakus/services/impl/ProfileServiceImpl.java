@@ -1,5 +1,7 @@
 package io.aekarakus.services.impl;
 
+import io.aekarakus.domain.dtos.ProfileDto;
+import io.aekarakus.domain.mappers.ProfileMapper;
 import io.aekarakus.domain.models.Application;
 import io.aekarakus.domain.models.Profile;
 import io.aekarakus.domain.repositories.ProfileRepository;
@@ -14,10 +16,12 @@ import java.util.List;
 public class ProfileServiceImpl implements ProfileService {
 
     private final ProfileRepository profileRepository;
+    private final ProfileMapper profileMapper;
 
     @Override
-    public Profile createProfile(Profile profile) {
-        return profileRepository.save(profile);
+    public ProfileDto createProfile(Profile profile) {
+        Profile savedProfile = profileRepository.save(profile);
+        return profileMapper.profileToProfileDto(savedProfile);
     }
 
     @Override
@@ -26,8 +30,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public List<Profile> listProfiles() {
-        return profileRepository.findAll();
+    public List<ProfileDto> listProfiles() {
+        return profileRepository.findAll().stream().map(profileMapper::profileToProfileDto).toList();
     }
 
     @Override
