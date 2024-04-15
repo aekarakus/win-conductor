@@ -5,26 +5,18 @@ import io.aekarakus.domain.ProfileInfo;
 import io.aekarakus.domain.dtos.ProfileDto;
 import io.aekarakus.domain.models.Device;
 import io.aekarakus.domain.models.Profile;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Mapper
-public abstract class ProfileMapper {
+@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+public interface ProfileMapper {
 
-    DeviceMapperImpl deviceMapper = new DeviceMapperImpl();
-
-    @Mapping(source = "deviceList", target = "deviceInfos", qualifiedByName = "deviceInfoListProducer")
-    public abstract ProfileDto profileToProfileDto(Profile profile);
-
-    public abstract ProfileInfo profileToProfileInfo(Profile profile);
-
-    @Named("deviceInfoListProducer")
-    public List<DeviceInfo> generateDeviceInfoList(List<Device> deviceList) {
-
-        return deviceList.stream().map(deviceMapper::deviceToDeviceInfo).toList();
-    };
+     @Mapping(target = "deviceInfos", source = "deviceList")
+     ProfileDto profileToProfileDto(Profile profile);
+     DeviceInfo deviceToDeviceInfo(Device device);
 }
+
