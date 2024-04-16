@@ -1,5 +1,6 @@
 package io.aekarakus.controllers;
 
+import io.aekarakus.domain.dtos.DeviceDto;
 import io.aekarakus.domain.models.Device;
 import io.aekarakus.services.DeviceService;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,8 @@ public class DeviceController {
     private final DeviceService deviceService;
 
     @PostMapping("/register")
-    ResponseEntity<Device> registerDevice(@RequestBody Device device) throws IOException {
-        Device savedDevice = deviceService.registerDevice(device);
+    ResponseEntity<DeviceDto> registerDevice(@RequestBody Device device) throws IOException {
+        DeviceDto savedDevice = deviceService.registerDevice(device);
         return ResponseEntity.ok().body(savedDevice);
     }
 
@@ -28,8 +29,14 @@ public class DeviceController {
     }
 
     @GetMapping("/list")
-    ResponseEntity<List<Device>> listDevices(){
-        List<Device> devices = deviceService.listRegisteredDevices();
+    ResponseEntity<List<DeviceDto>> listDevices(){
+        List<DeviceDto> devices = deviceService.listRegisteredDevices();
+        return ResponseEntity.ok().body(devices);
+    }
+
+    @GetMapping("/list/profile")
+    ResponseEntity<List<DeviceDto>> listDevicesByProfile(@RequestParam Long profileId){
+        List<DeviceDto> devices = deviceService.getDevicesThatHaveProfile(profileId);
         return ResponseEntity.ok().body(devices);
     }
 }

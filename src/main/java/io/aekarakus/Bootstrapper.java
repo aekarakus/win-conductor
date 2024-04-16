@@ -2,8 +2,11 @@ package io.aekarakus;
 
 import io.aekarakus.domain.models.Application;
 import io.aekarakus.domain.models.Device;
+import io.aekarakus.domain.models.Profile;
 import io.aekarakus.domain.repositories.ApplicationRepository;
 import io.aekarakus.domain.repositories.DeviceRepository;
+import io.aekarakus.domain.repositories.ProfileRepository;
+import io.aekarakus.exceptions.DeviceNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,6 +19,7 @@ public class Bootstrapper implements CommandLineRunner {
 
     private final DeviceRepository deviceRepository;
     private final ApplicationRepository applicationRepository;
+    private final ProfileRepository profileRepository;
 
     @Override
     public void run(String... args) {
@@ -47,5 +51,22 @@ public class Bootstrapper implements CommandLineRunner {
                 .build();
 
         applicationRepository.saveAll(List.of(chrome, npp));
+
+        Profile profileA = Profile.builder()
+                .id(1L)
+                .name("Profile - A")
+                .build();
+
+        Profile profileB= Profile.builder()
+                .id(2L)
+                .name("Profile - B")
+                .build();
+
+        profileRepository.saveAll(List.of(profileA, profileB));
+
+        windowsDeviceA = deviceRepository.findDeviceByAddress("10.0.0.10").orElseThrow(DeviceNotFoundException::new);
+
+        windowsDeviceA.setProfile(profileA);
+        deviceRepository.save(windowsDeviceA);
     }
 }

@@ -1,5 +1,7 @@
 package io.aekarakus.services.impl;
 
+import io.aekarakus.domain.dtos.DeviceDto;
+import io.aekarakus.domain.mappers.DeviceMapper;
 import io.aekarakus.domain.models.Device;
 import io.aekarakus.domain.repositories.DeviceRepository;
 import io.aekarakus.exceptions.DeviceNotFoundException;
@@ -19,13 +21,15 @@ public class DeviceServiceImpl implements DeviceService {
 
     private final DeviceRepository deviceRepository;
     private final DeviceUtils deviceUtils;
+    private final DeviceMapper deviceMapper;
 
     @Override
-    public Device registerDevice(Device device) throws IOException {
+    public DeviceDto registerDevice(Device device) throws IOException {
         if(!deviceUtils.isDeviceReachable(device)){
             throw new DeviceNotReachableException();
         }
-        return deviceRepository.save(device);
+        Device savedDevice = deviceRepository.save(device);
+        return deviceMapper.deviceToDeviceDto(savedDevice);
     }
 
     @Transactional
@@ -36,7 +40,14 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-    public List<Device> listRegisteredDevices() {
-        return deviceRepository.findAll();
+    public List<DeviceDto> listRegisteredDevices() {
+        return deviceRepository.findAll().stream().map(deviceMapper::deviceToDeviceDto).toList();
+    }
+
+    @Override
+    public List<DeviceDto> getDevicesThatHaveProfile(Long id) {
+
+        List<Device> devicesByProfileId = deviceRepository.findDevicesByProfileId(id);
+        return devicesByProfileId.stream().map(deviceMapper::deviceToDeviceDto).toList();
     }
 }
