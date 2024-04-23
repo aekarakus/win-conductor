@@ -6,10 +6,11 @@ import {
 } from "@chakra-ui/react";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 export default function NavItem(props){
-    const { icon, children, ...rest } = props;
+    const { icon, children, link, ...rest } = props;
     const color = useColorModeValue("gray.600", "gray.300");
     return (
       <Flex
@@ -40,7 +41,7 @@ export default function NavItem(props){
             as={icon}
           />
         )}
-        {children}
+        <Link to={link}>{children}</Link>
       </Flex>
     );
   };

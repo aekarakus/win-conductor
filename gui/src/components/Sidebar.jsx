@@ -55,7 +55,7 @@ export default function Sidebar(props) {
             color="gray.600"
             aria-label="Main Navigation"
         >
-            <NavItem icon={MdHome}>Home</NavItem>
+            <NavItem icon={MdHome} link="/devices">Devices</NavItem>
             <NavItem icon={FaRss}>Articles</NavItem>
             <NavItem icon={HiCollection}>Collections</NavItem>
             <NavItem icon={FaClipboardCheck}>Checklists</NavItem>
