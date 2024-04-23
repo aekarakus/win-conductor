@@ -110,11 +110,12 @@
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
         <version>3.4.2</version>
-        <configuration>
-          <to>
-            <image>localhost:5000/kiosk-service/v1</image>
-          </to>
-        </configuration>
+<!--        <configuration>-->
+<!--          <to>-->
+<!--            <image>localhost:5000/kiosk-service/v1</image>-->
+<!--          </to>-->
+<!--          <allowInsecureRegistries>true</allowInsecureRegistries>-->
+<!--        </configuration>-->
       </plugin>
     </plugins>
   </build>
