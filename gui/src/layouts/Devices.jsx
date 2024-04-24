@@ -5,68 +5,35 @@ import {
     flexRender,
 } from '@tanstack/react-table';
 import { useState, useReducer } from "react";
+import { useLoaderData } from "react-router-dom";
 
-const defaultData = [
-    {
-        firstName: 'tanner',
-        lastName: 'linsley',
-        age: 24,
-        visits: 100,
-        status: 'In Relationship',
-        progress: 50,
-    },
-    {
-        firstName: 'tandy',
-        lastName: 'miller',
-        age: 40,
-        visits: 40,
-        status: 'Single',
-        progress: 80,
-    },
-    {
-        firstName: 'joe',
-        lastName: 'dirte',
-        age: 45,
-        visits: 20,
-        status: 'Complicated',
-        progress: 10,
-    },
-]
 
 const columnHelper = createColumnHelper();
 
 const columns = [
-    columnHelper.accessor('firstName', {
+    columnHelper.accessor(row => row.id, {
+        id: 'id',
+        cell: info => <i>{info.getValue()}</i>,
+        header: () => <span>ID</span>,
+        footer: info => info.column.id,
+    }),
+    columnHelper.accessor('address', {
         cell: info => info.getValue(),
         footer: info => info.column.id,
     }),
-    columnHelper.accessor(row => row.lastName, {
-        id: 'lastName',
-        cell: info => <i>{info.getValue()}</i>,
-        header: () => <span>Last Name</span>,
+    columnHelper.accessor('name', {
+        header: () => 'Name',
+        cell: info => info.getValue(),
         footer: info => info.column.id,
     }),
-    columnHelper.accessor('age', {
-        header: () => 'Age',
-        cell: info => info.renderValue(),
-        footer: info => info.column.id,
-    }),
-    columnHelper.accessor('visits', {
-        header: () => <span>Visits</span>,
-        footer: info => info.column.id,
-    }),
-    columnHelper.accessor('status', {
-        header: 'Status',
-        footer: info => info.column.id,
-    }),
-    columnHelper.accessor('progress', {
-        header: 'Profile Progress',
+    columnHelper.accessor('Profile Info', {
+        header: () => <span>Profile Info</span>,
+        cell: info => (info.cell.row.original.profileInfo === null ? '' : info.cell.row.original.profileInfo.name),
         footer: info => info.column.id,
     }),
 ]
 export default function Devices() {
-    const [data, _setData] = useState(() => [...defaultData])
-    const rerender = useReducer(() => ({}), {})[1]
+    const data = useLoaderData();
 
     const table = useReactTable({
         data, columns, getCoreRowModel: getCoreRowModel(),
@@ -76,7 +43,7 @@ export default function Devices() {
             <Box mx="auto">
                 <TableContainer>
                     <Table variant='striped'>
-                        <TableCaption>Imperial to metric conversion factors</TableCaption>
+                        <TableCaption>Registered devices...</TableCaption>
                         <Thead>
                             {table.getHeaderGroups().map(headerGroup => (
                                 <Tr key={headerGroup.id}>
@@ -104,22 +71,6 @@ export default function Devices() {
                                 </Tr>
                             ))}
                         </Tbody>
-                        <Tfoot>
-                            {table.getFooterGroups().map(footerGroup => (
-                                <Tr key={footerGroup.id}>
-                                    {footerGroup.headers.map(header => (
-                                        <Th key={header.id}>
-                                            {header.isPlaceholder
-                                                ? null
-                                                : flexRender(
-                                                    header.column.columnDef.footer,
-                                                    header.getContext()
-                                                )}
-                                        </Th>
-                                    ))}
-                                </Tr>
-                            ))}
-                        </Tfoot>
                     </Table>
                 </TableContainer></Box>
         </Flex>

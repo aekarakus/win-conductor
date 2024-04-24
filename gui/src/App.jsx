@@ -11,7 +11,15 @@ const router = createBrowserRouter([
     children: [
 
       { index: true, element: <HomePage /> },
-      { path: 'devices', element: <Devices /> },
+      { path: 'devices', element: <Devices />, loader: async () => {
+          const response = await fetch("http://localhost:8080/api/devices/list");
+          if(!response.ok){
+
+          } else {
+            const resData = await response.json();
+            return resData;
+          }
+      } },
       { path: 'applications', element: <Applications /> },
     ]
   },
