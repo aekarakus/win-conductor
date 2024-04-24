@@ -76,3 +76,16 @@ export default function Devices() {
         </Flex>
     </>);
 }
+
+
+
+export async function loader(){
+
+    const response = await fetch("http://localhost:8080/api/devices/list");
+    if(!response.ok){
+        throw { message: "Could not fetch devices."}
+    } else {
+      return response;
+    }
+  
+}
