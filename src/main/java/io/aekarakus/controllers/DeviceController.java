@@ -36,7 +36,7 @@ public class DeviceController {
 
     @GetMapping("/list/profile")
     ResponseEntity<List<DeviceDto>> listDevicesByProfile(@RequestParam Long profileId){
-        List<DeviceDto> devices = deviceService.getDevicesThatHaveProfile(profileId);
+        List<DeviceDto> devices = deviceService.getDevicesByProfile(profileId);
         return ResponseEntity.ok().body(devices);
     }
 }
