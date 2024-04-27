@@ -1,15 +1,10 @@
 {
-  "name": "win-conductor",
-  "version": "0.0.0-win-conductor",
-  "description": "",
-  "author": "Alp Eren KARAKUS",
-  "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/commit-analyzer": "^12.0.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/npm": "^11.0.0",
-    "@semantic-release/release-notes-generator": "^12.0.0",
-    "semantic-release": "^22.0.5"
+    "@semantic-release/npm": "^12.0.0",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "semantic-release": "^23.0.8"
   }
 }
