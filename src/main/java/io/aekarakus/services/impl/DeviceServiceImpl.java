@@ -45,7 +45,7 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-    public List<DeviceDto> getDevicesThatHaveProfile(Long id) {
+    public List<DeviceDto> getDevicesByProfile(Long id) {
 
         List<Device> devicesByProfileId = deviceRepository.findDevicesByProfileId(id);
         return devicesByProfileId.stream().map(deviceMapper::deviceToDeviceDto).toList();
