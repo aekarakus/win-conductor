@@ -7,6 +7,7 @@ import {
 import { useState, useReducer } from "react";
 import { useLoaderData } from "react-router-dom";
 import TableToolbar from "../components/tableToolbar/TableToolbar";
+import DeviceRegistrationModal from "../components/deviceRegistrationModal/DeviceRegistrationModal";
 
 
 const columnHelper = createColumnHelper();
@@ -34,7 +35,6 @@ const columns = [
     }),
 ]
 export default function Devices() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const data = useLoaderData();
 
@@ -77,39 +77,10 @@ export default function Devices() {
                         </Tbody>
                     </Table>
                 </TableContainer></Flex>
-            <Modal
-                isOpen={isOpen}
-                onClose={onClose}
-            >
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Create your account</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody pb={6}>
-                        <FormControl>
-                            <FormLabel>First name</FormLabel>
-                            <Input placeholder='First name' />
-                        </FormControl>
-
-                        <FormControl mt={4}>
-                            <FormLabel>Last name</FormLabel>
-                            <Input placeholder='Last name' />
-                        </FormControl>
-                    </ModalBody>
-
-                    <ModalFooter>
-                        <Button colorScheme='blue' mr={3}>
-                            Save
-                        </Button>
-                        <Button onClick={onClose}>Cancel</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
+                <DeviceRegistrationModal isOpen={isOpen} onClose={onClose}/>
         </GridItem>
     </>);
 }
-
-
 
 export async function loader() {
 
