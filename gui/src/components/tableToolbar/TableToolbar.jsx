@@ -1,30 +1,29 @@
-import { ArrowForwardIcon, EmailIcon, PlusSquareIcon, SearchIcon } from "@chakra-ui/icons";
-import { Box, Button, Flex, Icon, Input, InputGroup, InputLeftElement, Spacer, Stack, Text } from "@chakra-ui/react";
+import { SearchIcon } from "@chakra-ui/icons";
+import { Box, Button, Circle, Flex, HStack, Icon, Input, InputGroup, InputLeftElement, Spacer, Text, useDisclosure } from "@chakra-ui/react";
 import { CiCirclePlus } from "react-icons/ci";
-import { MdOutlineDevices } from "react-icons/md";
 import { TiDeviceDesktop } from "react-icons/ti";
 
-export default function TableToolbar({ title }) {
+export default function TableToolbar({ title, onModalOpen }) {
     return (
-        <>
-            <Flex id="table-toolbar__title" w="full" h="30px" my="4" mx="4" direction="row" alignItems="center">
-                <Box w="40px" h="40px" borderRadius="100%" bg="rgb(224 242 254)" textAlign="center" alignContent="center">
-                    <Icon color="#095986" as={TiDeviceDesktop} boxSize="4" mt={1}/>
-                </Box>
+        <Flex id="table-toolbar" w="full" h="30px" my="4" px="4" direction="row" alignItems="center">
+            <HStack>
+                <Circle size="10" color='white' background="#095986">
+                    <Icon as={TiDeviceDesktop} boxSize="4" />
+                </Circle>
                 <Text fontWeight="hairline" fontSize="lg">{title}</Text>
-                <Spacer />
-                <Box>
-                    <InputGroup size="sm">
-                        <InputLeftElement pointerEvents="none">
-                            <SearchIcon color='gray.500' />
-                        </InputLeftElement>
-                        <Input focusBorderColor="#095986" errorBorderColor="red" placeholder="Search..." w="96" size="sm" variant="filled" />
-                    </InputGroup>
-                </Box>
-                <Button color="white" background="#095986" size="sm" ml="6" leftIcon={<CiCirclePlus />}  variant='solid'>
+            </HStack>
+            <Spacer />
+            <HStack>
+                <InputGroup size="sm">
+                    <InputLeftElement pointerEvents="none">
+                        <SearchIcon color='gray.500' />
+                    </InputLeftElement>
+                    <Input borderRadius="6" focusBorderColor="#095986" errorBorderColor="red" placeholder="Search..." w="96" size="sm" variant="filled" />
+                </InputGroup>
+                <Button onClick={onModalOpen} color="white" background="#095986" size="sm" leftIcon={<CiCirclePlus />} variant='solid'>
                     Register
                 </Button>
-            </Flex>
-        </>
+            </HStack>
+        </Flex>
     )
 }

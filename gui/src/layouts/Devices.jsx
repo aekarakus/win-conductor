@@ -1,4 +1,4 @@
-import { Box, Flex, TableContainer, Table, TableCaption, Thead, Tr, Th, Td, Tbody, Tfoot, GridItem } from "@chakra-ui/react";
+import { Box, Flex, TableContainer, Table, TableCaption, Thead, Tr, Th, Td, Tbody, Tfoot, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Button, useDisclosure } from "@chakra-ui/react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import {
     createColumnHelper,
@@ -34,6 +34,8 @@ const columns = [
     }),
 ]
 export default function Devices() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const data = useLoaderData();
 
     const table = useReactTable({
@@ -42,8 +44,7 @@ export default function Devices() {
     return (<>
         <GridItem w="full" h="full" my="3" colSpan="12">
             <Flex mt="10px" flexDirection="column" mx="auto" bg="white" w="full" border="1px solid #d3d3d3" borderRadius="10px">
-                
-                <TableToolbar title="Devices"/>
+                <TableToolbar title="Devices" onModalOpen={onOpen} />
                 <TableContainer>
                     <Table variant='simple' size="sm">
                         <TableCaption>Registered devices...</TableCaption>
@@ -76,6 +77,34 @@ export default function Devices() {
                         </Tbody>
                     </Table>
                 </TableContainer></Flex>
+            <Modal
+                isOpen={isOpen}
+                onClose={onClose}
+            >
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Create your account</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={6}>
+                        <FormControl>
+                            <FormLabel>First name</FormLabel>
+                            <Input placeholder='First name' />
+                        </FormControl>
+
+                        <FormControl mt={4}>
+                            <FormLabel>Last name</FormLabel>
+                            <Input placeholder='Last name' />
+                        </FormControl>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3}>
+                            Save
+                        </Button>
+                        <Button onClick={onClose}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </GridItem>
     </>);
 }
