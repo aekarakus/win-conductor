@@ -41,6 +41,11 @@ export default function Devices() {
     const table = useReactTable({
         data, columns, getCoreRowModel: getCoreRowModel(),
     });
+
+    function handleRegister(){
+        console.log("in register")
+    }
+
     return (<>
         <GridItem w="full" h="full" my="3" colSpan="12">
             <Flex mt="10px" flexDirection="column" mx="auto" bg="white" w="full" border="1px solid #d3d3d3" borderRadius="10px">
