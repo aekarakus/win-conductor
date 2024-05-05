@@ -9,15 +9,12 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <groupId>io.aekarakus</groupId>
-  <artifactId>kiosk-service</artifactId>
+  <groupId>io.aekarakus.winconductor</groupId>
+  <artifactId>engine</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>kiosk-service</name>
-  <description>A microservice that enforces kiosk mode on Windows machines</description>
-  <modules>
-    <module>sentinel</module>
-  </modules>
+  <name>engine</name>
+  <description>An application that manages Windows machines</description>
 
   <properties>
     <java.version>21</java.version>

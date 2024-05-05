@@ -1,7 +1,7 @@
 package io.aekarakus;
 
-public class Main {
+public class SentinelApplication {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        SpringAppli
     }
 }
