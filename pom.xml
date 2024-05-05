@@ -12,8 +12,12 @@
   <groupId>io.aekarakus</groupId>
   <artifactId>kiosk-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>kiosk-service</name>
   <description>A microservice that enforces kiosk mode on Windows machines</description>
+  <modules>
+    <module>sentinel</module>
+  </modules>
 
   <properties>
     <java.version>21</java.version>
@@ -69,12 +73,6 @@
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct</artifactId>
       <version>1.6.0.Beta1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>io.cloudsoft.windows</groupId>
-      <artifactId>winrm4j</artifactId>
-      <version>0.12.3</version>
     </dependency>
 
   </dependencies>
