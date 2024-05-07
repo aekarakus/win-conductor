@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -34,36 +37,13 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AccountsType", propOrder = {
+@XmlType(name = "Accounts", propOrder = {
     "users"
 })
+@Getter
+@Setter
 public class AccountsType {
 
     @XmlElement(name = "Users", required = true)
     protected UsersType users;
-
-    /**
-     * Gets the value of the users property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UsersType }
-     *     
-     */
-    public UsersType getUsers() {
-        return users;
-    }
-
-    /**
-     * Sets the value of the users property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UsersType }
-     *     
-     */
-    public void setUsers(UsersType value) {
-        this.users = value;
-    }
-
 }

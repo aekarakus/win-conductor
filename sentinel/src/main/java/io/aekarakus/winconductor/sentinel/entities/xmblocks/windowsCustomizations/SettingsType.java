@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -37,33 +40,11 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "SettingsType", propOrder = {
     "customizations"
 })
+@Getter
+@Setter
 public class SettingsType {
 
     @XmlElement(name = "Customizations", required = true)
     protected CustomizationsType customizations;
-
-    /**
-     * Gets the value of the customizations property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CustomizationsType }
-     *     
-     */
-    public CustomizationsType getCustomizations() {
-        return customizations;
-    }
-
-    /**
-     * Sets the value of the customizations property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CustomizationsType }
-     *     
-     */
-    public void setCustomizations(CustomizationsType value) {
-        this.customizations = value;
-    }
 
 }

@@ -8,11 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -39,59 +41,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "LocalUserShellSettingType", propOrder = {
     "userCustomShell"
 })
+@Getter
+@Setter
 public class LocalUserShellSettingType {
 
     @XmlElement(name = "UserCustomShell", required = true)
     protected String userCustomShell;
     @XmlAttribute(name = "Username")
     protected String username;
-
-    /**
-     * Gets the value of the userCustomShell property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUserCustomShell() {
-        return userCustomShell;
-    }
-
-    /**
-     * Sets the value of the userCustomShell property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUserCustomShell(String value) {
-        this.userCustomShell = value;
-    }
-
-    /**
-     * Gets the value of the username property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Sets the value of the username property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUsername(String value) {
-        this.username = value;
-    }
-
 }

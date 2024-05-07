@@ -11,14 +11,17 @@ package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizatio
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.xml.bind.JAXBElement;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlElementRef;
-import jakarta.xml.bind.annotation.XmlElementRefs;
-import jakarta.xml.bind.annotation.XmlMixed;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
+import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -57,6 +60,8 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "CommandConfigType", propOrder = {
     "content"
 })
+@Getter
+@Setter
 public class CommandConfigType {
 
     @XmlElementRefs({
@@ -68,67 +73,8 @@ public class CommandConfigType {
         @XmlElementRef(name = "ReturnCodeSuccess", namespace = "urn:schemas-microsoft-com:windows-provisioning", type = JAXBElement.class, required = false)
     })
     @XmlMixed
-    protected List<Serializable> content;
+    protected List<JAXBElement<String>> content = new ArrayList<>();
     @XmlAttribute(name = "Name")
     protected String name;
-
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link String }
-     * 
-     * 
-     */
-    public List<Serializable> getContent() {
-        if (content == null) {
-            content = new ArrayList<Serializable>();
-        }
-        return this.content;
-    }
-
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
 
 }

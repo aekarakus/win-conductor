@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.packageConfig;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -39,7 +42,7 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PackageConfigType", propOrder = {
+@XmlType(name = "PackageConfig", propOrder = {
     "id",
     "name",
     "version",
@@ -64,11 +67,11 @@ public class PackageConfigType {
 
     /**
      * Gets the value of the id property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getID() {
         return id;
@@ -76,11 +79,11 @@ public class PackageConfigType {
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setID(String value) {
         this.id = value;
@@ -88,11 +91,11 @@ public class PackageConfigType {
 
     /**
      * Gets the value of the name property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getName() {
         return name;
@@ -100,11 +103,11 @@ public class PackageConfigType {
 
     /**
      * Sets the value of the name property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -112,11 +115,11 @@ public class PackageConfigType {
 
     /**
      * Gets the value of the version property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getVersion() {
         return version;
@@ -124,11 +127,11 @@ public class PackageConfigType {
 
     /**
      * Sets the value of the version property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setVersion(String value) {
         this.version = value;
@@ -136,11 +139,11 @@ public class PackageConfigType {
 
     /**
      * Gets the value of the ownerType property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getOwnerType() {
         return ownerType;
@@ -148,11 +151,11 @@ public class PackageConfigType {
 
     /**
      * Sets the value of the ownerType property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setOwnerType(String value) {
         this.ownerType = value;
@@ -160,11 +163,11 @@ public class PackageConfigType {
 
     /**
      * Gets the value of the rank property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getRank() {
         return rank;
@@ -172,11 +175,11 @@ public class PackageConfigType {
 
     /**
      * Sets the value of the rank property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setRank(String value) {
         this.rank = value;
@@ -184,11 +187,11 @@ public class PackageConfigType {
 
     /**
      * Gets the value of the notes property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNotes() {
         return notes;
@@ -196,14 +199,13 @@ public class PackageConfigType {
 
     /**
      * Sets the value of the notes property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNotes(String value) {
         this.notes = value;
     }
-
 }

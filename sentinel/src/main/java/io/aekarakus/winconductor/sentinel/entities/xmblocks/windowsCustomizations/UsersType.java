@@ -8,17 +8,20 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
  * <p>Java class for UsersType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="UsersType"&gt;
  *   &lt;complexContent&gt;
@@ -30,40 +33,16 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UsersType", propOrder = {
-    "user"
+        "user"
 })
+@Getter
+@Setter
 public class UsersType {
 
     @XmlElement(name = "User", required = true)
     protected UserType user;
-
-    /**
-     * Gets the value of the user property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserType }
-     *     
-     */
-    public UserType getUser() {
-        return user;
-    }
-
-    /**
-     * Sets the value of the user property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserType }
-     *     
-     */
-    public void setUser(UserType value) {
-        this.user = value;
-    }
 
 }

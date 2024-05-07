@@ -8,10 +8,12 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -37,33 +39,12 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "UserSpecificSettingsType", propOrder = {
     "localUserSpecificSettings"
 })
+@Getter
+@Setter
 public class UserSpecificSettingsType {
 
     @XmlElement(name = "LocalUserSpecificSettings", required = true)
     protected LocalUserSpecificSettingsType localUserSpecificSettings;
 
-    /**
-     * Gets the value of the localUserSpecificSettings property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LocalUserSpecificSettingsType }
-     *     
-     */
-    public LocalUserSpecificSettingsType getLocalUserSpecificSettings() {
-        return localUserSpecificSettings;
-    }
-
-    /**
-     * Sets the value of the localUserSpecificSettings property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LocalUserSpecificSettingsType }
-     *     
-     */
-    public void setLocalUserSpecificSettings(LocalUserSpecificSettingsType value) {
-        this.localUserSpecificSettings = value;
-    }
 
 }

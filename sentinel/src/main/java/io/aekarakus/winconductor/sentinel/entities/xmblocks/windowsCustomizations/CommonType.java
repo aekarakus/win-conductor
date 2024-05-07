@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -47,6 +50,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "provisioningCommands",
     "smiSettings"
 })
+@Getter
+@Setter
 public class CommonType {
 
     @XmlElement(name = "Accounts", required = true)
@@ -61,149 +66,4 @@ public class CommonType {
     protected ProvisioningCommandsType provisioningCommands;
     @XmlElement(name = "SMISettings", required = true)
     protected SMISettingsType smiSettings;
-
-    /**
-     * Gets the value of the accounts property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AccountsType }
-     *     
-     */
-    public AccountsType getAccounts() {
-        return accounts;
-    }
-
-    /**
-     * Sets the value of the accounts property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AccountsType }
-     *     
-     */
-    public void setAccounts(AccountsType value) {
-        this.accounts = value;
-    }
-
-    /**
-     * Gets the value of the devDetail property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DevDetailType }
-     *     
-     */
-    public DevDetailType getDevDetail() {
-        return devDetail;
-    }
-
-    /**
-     * Sets the value of the devDetail property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DevDetailType }
-     *     
-     */
-    public void setDevDetail(DevDetailType value) {
-        this.devDetail = value;
-    }
-
-    /**
-     * Gets the value of the oobe property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OOBEType }
-     *     
-     */
-    public OOBEType getOOBE() {
-        return oobe;
-    }
-
-    /**
-     * Sets the value of the oobe property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OOBEType }
-     *     
-     */
-    public void setOOBE(OOBEType value) {
-        this.oobe = value;
-    }
-
-    /**
-     * Gets the value of the policies property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PoliciesType }
-     *     
-     */
-    public PoliciesType getPolicies() {
-        return policies;
-    }
-
-    /**
-     * Sets the value of the policies property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PoliciesType }
-     *     
-     */
-    public void setPolicies(PoliciesType value) {
-        this.policies = value;
-    }
-
-    /**
-     * Gets the value of the provisioningCommands property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ProvisioningCommandsType }
-     *     
-     */
-    public ProvisioningCommandsType getProvisioningCommands() {
-        return provisioningCommands;
-    }
-
-    /**
-     * Sets the value of the provisioningCommands property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ProvisioningCommandsType }
-     *     
-     */
-    public void setProvisioningCommands(ProvisioningCommandsType value) {
-        this.provisioningCommands = value;
-    }
-
-    /**
-     * Gets the value of the smiSettings property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link SMISettingsType }
-     *     
-     */
-    public SMISettingsType getSMISettings() {
-        return smiSettings;
-    }
-
-    /**
-     * Sets the value of the smiSettings property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link SMISettingsType }
-     *     
-     */
-    public void setSMISettings(SMISettingsType value) {
-        this.smiSettings = value;
-    }
-
 }

@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -37,33 +40,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "CustomizationsType", propOrder = {
     "common"
 })
+@Getter
+@Setter
 public class CustomizationsType {
 
     @XmlElement(name = "Common", required = true)
     protected CommonType common;
-
-    /**
-     * Gets the value of the common property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link CommonType }
-     *     
-     */
-    public CommonType getCommon() {
-        return common;
-    }
-
-    /**
-     * Sets the value of the common property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CommonType }
-     *     
-     */
-    public void setCommon(CommonType value) {
-        this.common = value;
-    }
-
 }

@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -37,33 +40,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "ProvisioningCommandsType", propOrder = {
     "primaryContext"
 })
+@Getter
+@Setter
 public class ProvisioningCommandsType {
 
     @XmlElement(name = "PrimaryContext", required = true)
     protected PrimaryContextType primaryContext;
-
-    /**
-     * Gets the value of the primaryContext property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PrimaryContextType }
-     *     
-     */
-    public PrimaryContextType getPrimaryContext() {
-        return primaryContext;
-    }
-
-    /**
-     * Sets the value of the primaryContext property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PrimaryContextType }
-     *     
-     */
-    public void setPrimaryContext(PrimaryContextType value) {
-        this.primaryContext = value;
-    }
-
 }

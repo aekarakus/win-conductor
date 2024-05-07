@@ -8,10 +8,12 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -39,59 +41,12 @@ import jakarta.xml.bind.annotation.XmlType;
     "enable",
     "userSpecificSettings"
 })
+@Getter
+@Setter
 public class ShellLauncherType {
 
     @XmlElement(name = "Enable", required = true)
     protected String enable;
     @XmlElement(name = "UserSpecificSettings", required = true)
     protected UserSpecificSettingsType userSpecificSettings;
-
-    /**
-     * Gets the value of the enable property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEnable() {
-        return enable;
-    }
-
-    /**
-     * Sets the value of the enable property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEnable(String value) {
-        this.enable = value;
-    }
-
-    /**
-     * Gets the value of the userSpecificSettings property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserSpecificSettingsType }
-     *     
-     */
-    public UserSpecificSettingsType getUserSpecificSettings() {
-        return userSpecificSettings;
-    }
-
-    /**
-     * Sets the value of the userSpecificSettings property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserSpecificSettingsType }
-     *     
-     */
-    public void setUserSpecificSettings(UserSpecificSettingsType value) {
-        this.userSpecificSettings = value;
-    }
-
 }

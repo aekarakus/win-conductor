@@ -10,10 +10,13 @@ package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizatio
 
 import java.util.ArrayList;
 import java.util.List;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -39,38 +42,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "CommandType", propOrder = {
     "commandConfig"
 })
+@Getter
+@Setter
 public class CommandType {
 
     @XmlElement(name = "CommandConfig")
     protected List<CommandConfigType> commandConfig;
-
-    /**
-     * Gets the value of the commandConfig property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the commandConfig property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCommandConfig().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link CommandConfigType }
-     * 
-     * 
-     */
-    public List<CommandConfigType> getCommandConfig() {
-        if (commandConfig == null) {
-            commandConfig = new ArrayList<CommandConfigType>();
-        }
-        return this.commandConfig;
-    }
-
 }

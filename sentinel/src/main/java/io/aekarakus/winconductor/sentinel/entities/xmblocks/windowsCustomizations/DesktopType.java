@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -37,33 +40,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "DesktopType", propOrder = {
     "hideOobe"
 })
+@Getter
+@Setter
 public class DesktopType {
 
     @XmlElement(name = "HideOobe", required = true)
     protected String hideOobe;
-
-    /**
-     * Gets the value of the hideOobe property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHideOobe() {
-        return hideOobe;
-    }
-
-    /**
-     * Sets the value of the hideOobe property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHideOobe(String value) {
-        this.hideOobe = value;
-    }
-
 }

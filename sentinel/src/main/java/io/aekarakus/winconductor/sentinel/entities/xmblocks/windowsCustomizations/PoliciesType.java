@@ -8,10 +8,13 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -37,33 +40,10 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "PoliciesType", propOrder = {
     "applicationManagement"
 })
+@Getter
+@Setter
 public class PoliciesType {
 
     @XmlElement(name = "ApplicationManagement", required = true)
     protected ApplicationManagementType applicationManagement;
-
-    /**
-     * Gets the value of the applicationManagement property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ApplicationManagementType }
-     *     
-     */
-    public ApplicationManagementType getApplicationManagement() {
-        return applicationManagement;
-    }
-
-    /**
-     * Sets the value of the applicationManagement property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ApplicationManagementType }
-     *     
-     */
-    public void setApplicationManagement(ApplicationManagementType value) {
-        this.applicationManagement = value;
-    }
-
 }

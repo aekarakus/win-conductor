@@ -8,10 +8,12 @@
 
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -41,6 +43,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "hideAutologonUI",
     "shellLauncher"
 })
+@Getter
+@Setter
 public class SMISettingsType {
 
     @XmlElement(name = "AutoLogon", required = true)
@@ -50,76 +54,5 @@ public class SMISettingsType {
     @XmlElement(name = "ShellLauncher", required = true)
     protected ShellLauncherType shellLauncher;
 
-    /**
-     * Gets the value of the autoLogon property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AutoLogonType }
-     *     
-     */
-    public AutoLogonType getAutoLogon() {
-        return autoLogon;
-    }
-
-    /**
-     * Sets the value of the autoLogon property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AutoLogonType }
-     *     
-     */
-    public void setAutoLogon(AutoLogonType value) {
-        this.autoLogon = value;
-    }
-
-    /**
-     * Gets the value of the hideAutologonUI property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHideAutologonUI() {
-        return hideAutologonUI;
-    }
-
-    /**
-     * Sets the value of the hideAutologonUI property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHideAutologonUI(String value) {
-        this.hideAutologonUI = value;
-    }
-
-    /**
-     * Gets the value of the shellLauncher property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ShellLauncherType }
-     *     
-     */
-    public ShellLauncherType getShellLauncher() {
-        return shellLauncher;
-    }
-
-    /**
-     * Sets the value of the shellLauncher property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ShellLauncherType }
-     *     
-     */
-    public void setShellLauncher(ShellLauncherType value) {
-        this.shellLauncher = value;
-    }
 
 }
