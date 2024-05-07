@@ -14,6 +14,7 @@ public class PowerShellServiceImpl implements PowerShellService {
     @Override
     public void sendCommandToMachine(CommandContext commandContext) {
 
+        System.out.println(commandContext);
         WinRmClientContext context = WinRmClientContext.newInstance();
         Device device = commandContext.getDevice();
         Command command = commandContext.getCommand();

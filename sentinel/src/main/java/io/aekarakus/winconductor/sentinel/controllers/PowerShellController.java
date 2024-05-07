@@ -20,6 +20,8 @@ public class PowerShellController{
 
     @PostMapping("/command")
     String sendCommand(@RequestBody CommandContext context){
+        System.out.println(context.toString());
+        System.out.println("klalsda");
         powerShellService.sendCommandToMachine(context);
         return "Ok";
     }
