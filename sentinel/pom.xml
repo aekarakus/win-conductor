@@ -63,4 +63,33 @@
             <version>1.5.1</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <xjbSources>
+                        <xjbSource>src/main/resources/global.xjb</xjbSource>
+                    </xjbSources>
+                    <sources>
+                        <source>src/main/resources/customizations.xml1.xsd</source>
+<!--                        <source>src/main/resources/customizations.xml2.xsd</source>-->
+                        <source>src/main/resources/customizations.xsd</source>
+                    </sources>
+                    <outputDirectory>${basedir}/src/main/java</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

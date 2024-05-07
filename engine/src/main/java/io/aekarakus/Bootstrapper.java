@@ -42,6 +42,7 @@ public class Bootstrapper implements CommandLineRunner {
                 .id(1L)
                 .chocolateyName("GoogleChrome")
                 .name("Google Chrome")
+                .path("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe")
                 .build();
 
         Application npp = Application.builder()

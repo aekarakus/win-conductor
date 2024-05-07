@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @Data
@@ -30,4 +31,5 @@ public class Application {
             inverseJoinColumns = @JoinColumn(name = "profile_id")
     )
     private List<Profile> profileList;
+    private String path;
 }
