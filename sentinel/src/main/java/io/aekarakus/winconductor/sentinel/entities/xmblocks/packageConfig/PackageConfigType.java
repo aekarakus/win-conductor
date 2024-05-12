@@ -52,17 +52,17 @@ import lombok.Setter;
 })
 public class PackageConfigType {
 
-    @XmlElement(name = "ID", required = true)
+    @XmlElement(name = "ID", required = true, namespace = "urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0")
     protected String id;
-    @XmlElement(name = "Name", required = true)
+    @XmlElement(name = "Name", required = true, namespace = "urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0")
     protected String name;
-    @XmlElement(name = "Version", required = true)
+    @XmlElement(name = "Version", required = true, namespace = "urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0")
     protected String version;
-    @XmlElement(name = "OwnerType", required = true)
+    @XmlElement(name = "OwnerType", required = true, namespace = "urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0")
     protected String ownerType;
-    @XmlElement(name = "Rank", required = true)
+    @XmlElement(name = "Rank", required = true, namespace = "urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0")
     protected String rank;
-    @XmlElement(name = "Notes", required = true)
+    @XmlElement(name = "Notes", required = true, namespace = "urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0")
     protected String notes;
 
     /**

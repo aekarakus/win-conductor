@@ -44,7 +44,7 @@ import lombok.Setter;
 @Setter
 public class OOBEType {
 
-    @XmlElement(name = "Desktop", required = true)
+    @XmlElement(name = "Desktop", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected DesktopType desktop;
 
     /**

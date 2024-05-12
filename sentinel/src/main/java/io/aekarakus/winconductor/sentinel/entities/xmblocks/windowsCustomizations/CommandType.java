@@ -46,6 +46,6 @@ import lombok.Setter;
 @Setter
 public class CommandType {
 
-    @XmlElement(name = "CommandConfig")
+    @XmlElement(name = "CommandConfig", namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected List<CommandConfigType> commandConfig;
 }

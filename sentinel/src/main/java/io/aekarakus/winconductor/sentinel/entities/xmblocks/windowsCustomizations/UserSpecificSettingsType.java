@@ -43,7 +43,7 @@ import lombok.Setter;
 @Setter
 public class UserSpecificSettingsType {
 
-    @XmlElement(name = "LocalUserSpecificSettings", required = true)
+    @XmlElement(name = "LocalUserSpecificSettings", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected LocalUserSpecificSettingsType localUserSpecificSettings;
 
 

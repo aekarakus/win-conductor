@@ -45,6 +45,6 @@ import lombok.Setter;
 @Setter
 public class LocalUserSpecificSettingsType {
 
-    @XmlElement(name = "LocalUserShellSetting")
+    @XmlElement(name = "LocalUserShellSetting", namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected List<LocalUserShellSettingType> localUserShellSetting;
 }

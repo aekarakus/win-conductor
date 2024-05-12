@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class DesktopType {
 
-    @XmlElement(name = "HideOobe", required = true)
+    @XmlElement(name = "HideOobe", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String hideOobe;
 }

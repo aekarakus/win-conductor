@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class PrimaryContextType {
 
-    @XmlElement(name = "Command", required = true)
+    @XmlElement(name = "Command", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected CommandType command;
 }

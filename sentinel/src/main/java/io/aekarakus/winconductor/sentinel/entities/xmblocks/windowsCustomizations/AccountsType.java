@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class AccountsType {
 
-    @XmlElement(name = "Users", required = true)
+    @XmlElement(name = "Users", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected UsersType users;
 }

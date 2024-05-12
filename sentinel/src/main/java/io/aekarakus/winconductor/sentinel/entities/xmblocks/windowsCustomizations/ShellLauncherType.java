@@ -45,8 +45,8 @@ import lombok.Setter;
 @Setter
 public class ShellLauncherType {
 
-    @XmlElement(name = "Enable", required = true)
+    @XmlElement(name = "Enable", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String enable;
-    @XmlElement(name = "UserSpecificSettings", required = true)
+    @XmlElement(name = "UserSpecificSettings", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected UserSpecificSettingsType userSpecificSettings;
 }

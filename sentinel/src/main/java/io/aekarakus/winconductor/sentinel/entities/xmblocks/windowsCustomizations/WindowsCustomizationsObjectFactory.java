@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  *
  */
 @XmlRegistry
-public class ObjectFactory {
+public class WindowsCustomizationsObjectFactory {
 
     private final static QName _Settings_QNAME = new QName("urn:schemas-microsoft-com:windows-provisioning", "Settings");
     private final static QName _CommandConfigTypeCommandFile_QNAME = new QName("urn:schemas-microsoft-com:windows-provisioning", "CommandFile");
@@ -44,7 +44,7 @@ public class ObjectFactory {
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.microsoft.schemas.windows_provisioning
      *
      */
-    public ObjectFactory() {
+    public WindowsCustomizationsObjectFactory() {
     }
 
     /**

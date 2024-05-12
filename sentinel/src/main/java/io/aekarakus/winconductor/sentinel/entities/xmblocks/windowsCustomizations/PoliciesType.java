@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class PoliciesType {
 
-    @XmlElement(name = "ApplicationManagement", required = true)
+    @XmlElement(name = "ApplicationManagement", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected ApplicationManagementType applicationManagement;
 }

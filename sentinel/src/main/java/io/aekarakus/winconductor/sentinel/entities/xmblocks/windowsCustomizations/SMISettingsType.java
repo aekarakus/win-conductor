@@ -47,11 +47,11 @@ import lombok.Setter;
 @Setter
 public class SMISettingsType {
 
-    @XmlElement(name = "AutoLogon", required = true)
+    @XmlElement(name = "AutoLogon", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected AutoLogonType autoLogon;
-    @XmlElement(name = "HideAutologonUI", required = true)
+    @XmlElement(name = "HideAutologonUI", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String hideAutologonUI;
-    @XmlElement(name = "ShellLauncher", required = true)
+    @XmlElement(name = "ShellLauncher", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected ShellLauncherType shellLauncher;
 
 

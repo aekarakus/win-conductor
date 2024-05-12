@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class CustomizationsType {
 
-    @XmlElement(name = "Common", required = true)
+    @XmlElement(name = "Common", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected CommonType common;
 }

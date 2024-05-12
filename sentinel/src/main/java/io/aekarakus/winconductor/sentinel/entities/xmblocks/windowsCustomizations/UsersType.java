@@ -42,7 +42,7 @@ import lombok.Setter;
 @Setter
 public class UsersType {
 
-    @XmlElement(name = "User", required = true)
+    @XmlElement(name = "User", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected UserType user;
 
 }

@@ -43,9 +43,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UserType {
 
-    @XmlElement(name = "Password", required = true)
+    @XmlElement(name = "Password", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String password;
-    @XmlElement(name = "UserGroup", required = true)
+    @XmlElement(name = "UserGroup", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String userGroup;
     @XmlAttribute(name = "UserName")
     protected String userName;

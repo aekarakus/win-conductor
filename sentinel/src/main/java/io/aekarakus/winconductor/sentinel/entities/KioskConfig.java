@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @XmlRootElement(name = "WindowsCustomizations")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {

@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class ApplicationManagementType {
 
-    @XmlElement(name = "AllowAllTrustedApps", required = true)
+    @XmlElement(name = "AllowAllTrustedApps", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String allowAllTrustedApps;
 }

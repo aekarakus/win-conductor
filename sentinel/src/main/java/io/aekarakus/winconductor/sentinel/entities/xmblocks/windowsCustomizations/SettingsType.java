@@ -44,7 +44,7 @@ import lombok.Setter;
 @Setter
 public class SettingsType {
 
-    @XmlElement(name = "Customizations", required = true)
+    @XmlElement(name = "Customizations", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected CustomizationsType customizations;
 
 }

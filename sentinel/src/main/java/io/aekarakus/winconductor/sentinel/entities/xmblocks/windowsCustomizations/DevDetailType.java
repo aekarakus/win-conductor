@@ -44,6 +44,6 @@ import lombok.Setter;
 @Setter
 public class DevDetailType {
 
-    @XmlElement(name = "DNSComputerName", required = true)
+    @XmlElement(name = "DNSComputerName", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String dnsComputerName;
 }

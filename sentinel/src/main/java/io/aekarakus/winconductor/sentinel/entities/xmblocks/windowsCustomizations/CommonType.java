@@ -54,16 +54,16 @@ import lombok.Setter;
 @Setter
 public class CommonType {
 
-    @XmlElement(name = "Accounts", required = true)
+    @XmlElement(name = "Accounts", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected AccountsType accounts;
-    @XmlElement(name = "DevDetail", required = true)
+    @XmlElement(name = "DevDetail", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected DevDetailType devDetail;
-    @XmlElement(name = "OOBE", required = true)
+    @XmlElement(name = "OOBE", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected OOBEType oobe;
-    @XmlElement(name = "Policies", required = true)
+    @XmlElement(name = "Policies", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected PoliciesType policies;
-    @XmlElement(name = "ProvisioningCommands", required = true)
+    @XmlElement(name = "ProvisioningCommands", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected ProvisioningCommandsType provisioningCommands;
-    @XmlElement(name = "SMISettings", required = true)
+    @XmlElement(name = "SMISettings", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected SMISettingsType smiSettings;
 }

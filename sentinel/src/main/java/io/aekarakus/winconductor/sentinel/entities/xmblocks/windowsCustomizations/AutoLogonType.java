@@ -47,10 +47,10 @@ import lombok.Setter;
 @Setter
 public class AutoLogonType {
 
-    @XmlElement(name = "Enable", required = true)
+    @XmlElement(name = "Enable", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String enable;
-    @XmlElement(name = "Password", required = true)
+    @XmlElement(name = "Password", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String password;
-    @XmlElement(name = "UserName", required = true)
+    @XmlElement(name = "UserName", required = true, namespace = "urn:schemas-microsoft-com:windows-provisioning")
     protected String userName;
 }
