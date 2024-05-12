@@ -51,7 +51,6 @@ public class PowerShellServiceImpl implements PowerShellService {
 
         Device device = commandContext.getDevice();
         Command command = commandContext.getCommand();
-        Application application = commandContext.getApplication();
 
         WinRmTool tool = WinRmTool.Builder.builder(device.getAddress(), device.getUserName(), device.getPassword())
                 .authenticationScheme(AuthSchemes.NTLM)
@@ -60,6 +59,18 @@ public class PowerShellServiceImpl implements PowerShellService {
                 .build();
 
 
+        buildXMLConfig();
+
+        WinRmToolResponse response = tool.executePs(command.getContent());
+
+        System.out.println("Out:" + response.getStdOut());
+        System.out.println("status:" + response.getStatusCode());
+        System.out.println("Err:" + response.getStdErr());
+
+        context.shutdown();
+    }
+
+    private static void buildXMLConfig() throws JAXBException {
         PackageConfigObjectFactory packageConfigObjectFactory = new PackageConfigObjectFactory();
         WindowsCustomizationsObjectFactory windowsCustomizationsObjectFactory = new WindowsCustomizationsObjectFactory();
         Random random = new Random();
@@ -175,13 +186,5 @@ public class PowerShellServiceImpl implements PowerShellService {
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         marshaller.marshal(kioskConfig, new File("./test.xml"));
-
-        WinRmToolResponse response = tool.executePs(command.getContent());
-
-        System.out.println("Out:" + response.getStdOut());
-        System.out.println("status:" + response.getStatusCode());
-        System.out.println("Err:" + response.getStdErr());
-
-        context.shutdown();
     }
 }
