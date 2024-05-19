@@ -57,102 +57,56 @@ public class PowerShellServiceImpl implements PowerShellService {
                 .context(context)
                 .build();
 
+
+
+//        String command = """
+//                New-Item -ItemType Directory -Path C:\\Users\\vagrant\\Desktop\\kiosk -Force
+//                Copy-Item -Path "C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Imaging and Configuration Designer\\x86\\Microsoft-Desktop-Provisioning.dat" -Destination C:\\Users\\vagrant\\Desktop\\kiosk\\Microsoft-Desktop-Provisioning.dat
+//                $xml = @"
+//                %s"@
+//                $xml | Out-File C:\\Users\\vagrant\\Desktop\\kiosk\\customizations.xml -Encoding utf8 -Force
+//                $cmd="C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Imaging and Configuration Designer\\x86\\ICD.exe"
+//                & $cmd /Build-ProvisioningPackage /PackagePath:C:\\Users\\vagrant\\Desktop\\kiosk\\kiosk /CustomizationXML:C:\\Users\\vagrant\\Desktop\\kiosk\\customizations.xml /StoreFile:'C:\\Users\\vagrant\\Desktop\\kiosk\\Microsoft-Desktop-Provisioning.dat'
+//                Add-ProvisioningPackage -Path C:\\Users\\vagrant\\Desktop\\kiosk\\kiosk\\kiosk.ppkg -QuietInstall
+//                """;
+//        String content = "$content = @\"\n%s\"@";
+//        String executeScript = "echo $content | Out-File C:\\Users\\vagrant\\Desktop\\kiosk\\target.ps1";
+
+        String createDir = "Add-Content -Path C:\\Users\\vagrant\\Desktop\\target.ps1 -Value \"New-Item -ItemType Directory -Path C:\\Users\\vagrant\\Desktop\\kiosk -Force\"";
+        String copyStoreFile = "Add-Content -Path C:\\Users\\vagrant\\Desktop\\target.ps1 -Value 'Copy-Item -Path \"C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Imaging and Configuration Designer\\x86\\Microsoft-Desktop-Provisioning.dat\" -Destination C:\\Users\\vagrant\\Desktop\\kiosk\\Microsoft-Desktop-Provisioning.dat'";
+        String declareXml = String.format("Add-Content -Path C:\\Users\\vagrant\\Desktop\\target.ps1 -Value \"echo '%s' | Out-File C:\\Users\\vagrant\\Desktop\\kiosk\\customizations.xml -Encoding utf8 -Force\"", buildXMLConfig().replace("\"", "`\""));
+        String declareCommand = "Add-Content -Path C:\\Users\\vagrant\\Desktop\\target.ps1 -Value '$cmd=\"C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Imaging and Configuration Designer\\x86\\ICD.exe\"'";
+        String createPPKG = "Add-Content -Path C:\\Users\\vagrant\\Desktop\\target.ps1 -Value  '& $cmd /Build-ProvisioningPackage /PackagePath:C:\\Users\\vagrant\\Desktop\\kiosk\\kiosk /CustomizationXML:C:\\Users\\vagrant\\Desktop\\kiosk\\customizations.xml /StoreFile:C:\\Users\\vagrant\\Desktop\\kiosk\\Microsoft-Desktop-Provisioning.dat'";
+        String applyPPKG = "Add-Content -Path C:\\Users\\vagrant\\Desktop\\target.ps1 -Value  'Add-ProvisioningPackage -Path C:\\Users\\vagrant\\Desktop\\kiosk\\kiosk.ppkg -QuietInstall'";
+
         System.out.println(buildXMLConfig());
+        System.out.println(declareXml);
 
-        String command = """
-                New-Item -ItemType Directory -Path C:\\Users\\vagrant\\Desktop\\kiosk -Force
-                Copy-Item -Path "C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Imaging and Configuration Designer\\x86\\Microsoft-Desktop-Provisioning.dat" -Destination C:\\Users\\vagrant\\Desktop\\kiosk\\Microsoft-Desktop-Provisioning.dat
-                $xml = @"
-                <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                <WindowsCustomizations xmlns:ns2="urn:schemas-microsoft-com:windows-provisioning" xmlns:ns3="urn:schemas-Microsoft-com:Windows-ICD-Package-Config.v1.0">
-                    <ns3:PackageConfig>
-                        <ns3:ID>{7bf5c3f8-79f7-468e-bc9d-aa4be0f66ecf}</ns3:ID>
-                        <ns3:Name>Project_1731293055</ns3:Name>
-                        <ns3:Version>1.1</ns3:Version>
-                        <ns3:OwnerType>OEM</ns3:OwnerType>
-                        <ns3:Rank>0</ns3:Rank>
-                        <ns3:Notes></ns3:Notes>
-                    </ns3:PackageConfig>
-                    <ns2:Settings>
-                        <ns2:Customizations>
-                            <ns2:Common>
-                                <ns2:Accounts>
-                                    <ns2:Users>
-                                        <ns2:User UserName="kiosk">
-                                            <ns2:Password>kiosk</ns2:Password>
-                                            <ns2:UserGroup>Standard Users</ns2:UserGroup>
-                                        </ns2:User>
-                                    </ns2:Users>
-                                </ns2:Accounts>
-                                <ns2:DevDetail>
-                                    <ns2:DNSComputerName>kiosk-1</ns2:DNSComputerName>
-                                </ns2:DevDetail>
-                                <ns2:OOBE>
-                                    <ns2:Desktop>
-                                        <ns2:HideOobe>True</ns2:HideOobe>
-                                    </ns2:Desktop>
-                                </ns2:OOBE>
-                                <ns2:Policies>
-                                    <ns2:ApplicationManagement>
-                                        <ns2:AllowAllTrustedApps>Yes</ns2:AllowAllTrustedApps>
-                                    </ns2:ApplicationManagement>
-                                </ns2:Policies>
-                                <ns2:ProvisioningCommands>
-                                    <ns2:PrimaryContext>
-                                        <ns2:Command>
-                                            <ns2:CommandConfig Name="chrome">
-                                                <ns2:CommandFile>C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe</ns2:CommandFile>
-                                                <ns2:CommandLine>cmd /c "chrome.exe"</ns2:CommandLine>
-                                                <ns2:ContinueInstall>True</ns2:ContinueInstall>
-                                                <ns2:RestartRequired>False</ns2:RestartRequired>
-                                                <ns2:ReturnCodeRestart>1010</ns2:ReturnCodeRestart>
-                                                <ns2:ReturnCodeSuccess>0</ns2:ReturnCodeSuccess>
-                                            </ns2:CommandConfig>
-                                            <ns2:CommandConfig Name="InstallShellLauncher">
-                                                <ns2:CommandLine>dism /online /enable-feature /FeatureName:Client-EmbeddedShellLauncher /all</ns2:CommandLine>
-                                            </ns2:CommandConfig>
-                                        </ns2:Command>
-                                    </ns2:PrimaryContext>
-                                </ns2:ProvisioningCommands>
-                                <ns2:SMISettings>
-                                    <ns2:AutoLogon>
-                                        <ns2:Enable>ENABLE</ns2:Enable>
-                                        <ns2:Password>kiosk</ns2:Password>
-                                        <ns2:UserName>kiosk</ns2:UserName>
-                                    </ns2:AutoLogon>
-                                    <ns2:HideAutologonUI>False</ns2:HideAutologonUI>
-                                    <ns2:ShellLauncher>
-                                        <ns2:Enable>ENABLE</ns2:Enable>
-                                        <ns2:UserSpecificSettings>
-                                            <ns2:LocalUserSpecificSettings>
-                                                <ns2:LocalUserShellSetting Username="LocalUserShellSetting">
-                                                    <ns2:UserCustomShell>C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe</ns2:UserCustomShell>
-                                                </ns2:LocalUserShellSetting>
-                                                <ns2:LocalUserShellSetting Username="kiosk">
-                                                    <ns2:UserCustomShell>C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe</ns2:UserCustomShell>
-                                                </ns2:LocalUserShellSetting>
-                                            </ns2:LocalUserSpecificSettings>
-                                        </ns2:UserSpecificSettings>
-                                    </ns2:ShellLauncher>
-                                </ns2:SMISettings>
-                            </ns2:Common>
-                        </ns2:Customizations>
-                    </ns2:Settings>
-                </WindowsCustomizations>
-                "@
-                $xml | Out-File C:\\Users\\vagrant\\Desktop\\kiosk\\customizations.xml -Encoding utf8 -Force
-                $cmd="C:\\Program Files (x86)\\Windows Kits\\10\\Assessment and Deployment Kit\\Imaging and Configuration Designer\\x86\\ICD.exe"
-                & $cmd /Build-ProvisioningPackage /PackagePath:C:\\Users\\vagrant\\Desktop\\kiosk\\kiosk /CustomizationXML:C:\\Users\\vagrant\\Desktop\\kiosk\\customizations.xml /StoreFile:'C:\\Users\\vagrant\\Desktop\\kiosk\\Microsoft-Desktop-Provisioning.dat'
-                Add-ProvisioningPackage -Path C:\\Users\\vagrant\\Desktop\\kiosk\\kiosk\\kiosk.ppkg -QuietInstall
-                """;
+//        List<String> commands = List.of(
+//                createDir,
+//                copyStoreFile,
+//                declareXml
+////                declareCommand,
+////                createPPKG
+////                applyPPKG
+//        );
 
-        System.out.println(command);
+//        command = String.format(command, buildXMLConfig());
+//        content = String.format(content, command);
+//        System.out.println(content);
 
-        WinRmToolResponse response = tool.executePs(command);
+        tool.executePs("Remove-Item C:\\Users\\vagrant\\Desktop\\target.ps1");
+        tool.executePs(createDir);
+        tool.executePs(copyStoreFile);
+        tool.executePs(declareXml);
+        tool.executePs(declareCommand);
+        tool.executePs(createPPKG);
+        tool.executePs(applyPPKG);
+        tool.executePs("Powershell.exe -File C:\\Users\\vagrant\\Desktop\\target.ps1");
 
-        System.out.println("Out:" + response.getStdOut());
-        System.out.println("status:" + response.getStatusCode());
-        System.out.println("Err:" + response.getStdErr());
+//        System.out.println("Out:" + response.getStdOut());
+//        System.out.println("status:" + response.getStatusCode());
+//        System.out.println("Err:" + response.getStdErr());
 
         context.shutdown();
     }
@@ -279,7 +233,7 @@ public class PowerShellServiceImpl implements PowerShellService {
 
         JAXBContext jaxbContext = JAXBContext.newInstance(KioskConfig.class, PackageConfigObjectFactory.class, WindowsCustomizationsObjectFactory.class);
         Marshaller marshaller = jaxbContext.createMarshaller();
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.FALSE);
 
         StringWriter sw = new StringWriter();
         marshaller.marshal(kioskConfig, sw);

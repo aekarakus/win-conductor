@@ -5,7 +5,7 @@
 // Generated on: 2024.05.12 at 07:41:45 PM TRT 
 //
 
-@jakarta.xml.bind.annotation.XmlSchema(
+@javax.xml.bind.annotation.XmlSchema(
         namespace = "urn:schemas-microsoft-com:windows-provisioning",
-        elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package io.aekarakus.winconductor.sentinel.entities.xmblocks.windowsCustomizations;
