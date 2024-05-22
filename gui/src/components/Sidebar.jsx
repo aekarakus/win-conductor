@@ -21,10 +21,10 @@ export default function Sidebar(props) {
         pb="10"
         overflowX="hidden"
         overflowY="auto"
-        bg="white"
+        bg="#095986"
         _dark={{ bg: "gray.800" }}
         border
-        color="inherit"
+        color="white"
         borderRightWidth="1px"
         w="60"
         {...props}
@@ -34,7 +34,7 @@ export default function Sidebar(props) {
                 <Text
                     fontSize="2xl"
                     ml="2"
-                    color="brand.500"
+                    color="white"
                     _dark={{ color: "white" }}
                     fontWeight="semibold"
                 >
@@ -45,7 +45,7 @@ export default function Sidebar(props) {
             direction="column"
             as="nav"
             fontSize="sm"
-            color="gray.600"
+            color="white"
             aria-label="Main Navigation"
         >
             <NavItem icon={MdHome} link="/devices">Devices</NavItem>
