@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - stage
 
 permissions:
   contents: read # for checkout
