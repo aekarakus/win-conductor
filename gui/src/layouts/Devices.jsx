@@ -1,4 +1,4 @@
-import { Box, Flex, TableContainer, Table, TableCaption, Thead, Tr, Th, Td, Tbody, Tfoot } from "@chakra-ui/react";
+import { Box, Flex, TableContainer, Table, TableCaption, Thead, Tr, Th, Td, Tbody, Tfoot, GridItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, FormControl, FormLabel, Input, ModalFooter, Button, useDisclosure } from "@chakra-ui/react";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import {
     createColumnHelper,
@@ -6,6 +6,8 @@ import {
 } from '@tanstack/react-table';
 import { useState, useReducer } from "react";
 import { useLoaderData } from "react-router-dom";
+import TableToolbar from "../components/tableToolbar/TableToolbar";
+import DeviceRegistrationModal from "../components/deviceRegistrationModal/DeviceRegistrationModal";
 
 
 const columnHelper = createColumnHelper();
@@ -33,16 +35,23 @@ const columns = [
     }),
 ]
 export default function Devices() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const data = useLoaderData();
 
     const table = useReactTable({
         data, columns, getCoreRowModel: getCoreRowModel(),
     });
+
+    function handleRegister(){
+        console.log("in register")
+    }
+
     return (<>
-        <Flex w="full" h="full" my="3">
-            <Box mx="auto">
+        <GridItem w="full" h="full" my="3" colSpan="12">
+            <Flex mt="10px" flexDirection="column" mx="auto" bg="white" w="full" border="1px solid #d3d3d3" borderRadius="10px">
+                <TableToolbar title="Devices" onModalOpen={onOpen} />
                 <TableContainer>
-                    <Table variant='striped'>
+                    <Table variant='simple' size="sm">
                         <TableCaption>Registered devices...</TableCaption>
                         <Thead>
                             {table.getHeaderGroups().map(headerGroup => (
@@ -72,20 +81,19 @@ export default function Devices() {
                             ))}
                         </Tbody>
                     </Table>
-                </TableContainer></Box>
-        </Flex>
+                </TableContainer></Flex>
+                <DeviceRegistrationModal isOpen={isOpen} onClose={onClose}/>
+        </GridItem>
     </>);
 }
 
-
-
-export async function loader(){
+export async function loader() {
 
     const response = await fetch("http://localhost:8080/api/devices/list");
-    if(!response.ok){
-        throw { message: "Could not fetch devices."}
+    if (!response.ok) {
+        throw { message: "Could not fetch devices." }
     } else {
-      return response;
+        return response;
     }
-  
+
 }

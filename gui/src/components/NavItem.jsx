@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 export default function NavItem(props){
     const { icon, children, link, ...rest } = props;
-    const color = useColorModeValue("gray.600", "gray.300");
     return (
       <Flex
         align="center"
@@ -22,12 +21,12 @@ export default function NavItem(props){
         color="inherit"
         _dark={{ color: "gray.400" }}
         _hover={{
-          bg: "gray.100",
+          bg: "rgb(2 106 162)",
           _dark: { bg: "gray.900" },
-          color: "gray.900",
+          color: "white",
         }}
         role="group"
-        fontWeight="semibold"
+        fontWeight="thin"
         transition=".15s ease"
         {...rest}
       >
@@ -36,7 +35,7 @@ export default function NavItem(props){
             mx="2"
             boxSize="4"
             _groupHover={{
-              color: color,
+              color: "white",
             }}
             as={icon}
           />
